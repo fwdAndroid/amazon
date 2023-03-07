@@ -44,13 +44,13 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
-  // void signInUser() {
-  //   authService.signInUser(
-  //     context: context,
-  //     email: _emailController.text,
-  //     password: _passwordController.text,
-  //   );
-  // }
+  void signInUser() {
+    authService.signInUser(
+      context: context,
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +168,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           text: 'Sign In',
                           onTap: () {
                             if (_signInFormKey.currentState!.validate()) {
-                              //   signInUser();
+                              signInUser();
                             }
                           },
                         )

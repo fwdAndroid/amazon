@@ -38,6 +38,7 @@ authRouter.post("/api/signin", async (req, res) => {
         return res
           .status(400)
           .json({ msg: "User with this email does not exist!" });
+          
       }
   
       const isMatch = await bcryptjs.compare(password, user.password);
