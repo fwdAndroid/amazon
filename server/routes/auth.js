@@ -1,10 +1,27 @@
 const express =require("express");
+const User = require("../models/user");
 
 const authRouter = express.Router();
+authRouter.post("api/signup",async (req, res) => {
+    const {name , email, password} = req.body;
 
-authRouter.get("/user",(req,res) => {
- res.json({id:"awad"})
-});
+    const existingUser = await User.findOne({ email });
 
+    if(existingUser){
+        return res.status(400).json({msg:"User email Already exist"});
+    }
+    
+    let user = new User({
+        email,
+        name,
+        password
+    })
+
+    user = await user.save();
+    res.json(user)
+
+
+
+})
 //Export this files mean able to use this files function in anyother file
 module.exports = authRouter;  
