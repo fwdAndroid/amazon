@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 class AuthService {
   //SignUp
-  void signupUser({
+  void signUpUser({
     required BuildContext context,
     required String email,
     required String name,
