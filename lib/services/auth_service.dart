@@ -6,6 +6,7 @@ import 'package:amazon/constants/utils.dart';
 import 'package:amazon/models/user_models.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   //SignUp
@@ -62,15 +63,14 @@ class AuthService {
           'Content-Type': 'application/json; charset=UTF-8',
         },
       );
-
+      print(res.body);
       httpErrorHandle(
         response: res,
         context: context,
-        onSuccess: () {
-          showSnackBar(
-            context,
-            'Account created! Login with the same credentials!',
-          );
+        onSuccess: () async {
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+
+          await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
         },
       );
     } catch (e) {
