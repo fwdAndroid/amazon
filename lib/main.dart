@@ -1,8 +1,12 @@
+import 'package:amazon/providers/user_provider.dart';
 import 'package:amazon/screens/auth_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => UserProvider())
+  ]));
 }
 
 class MyApp extends StatelessWidget {
