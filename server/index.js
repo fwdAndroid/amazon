@@ -6,6 +6,7 @@ const app = express();
 const DB = "mongodb+srv://fwdkaleem:_Zeo1234567890@cluster0.etasruq.mongodb.net/?retryWrites=true&w=majority"
 
 //Middleware Use TO communicate Data
+app.use(express.json());
 app.use(authRouter);
 
 //Connections

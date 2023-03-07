@@ -3,7 +3,8 @@ const User = require("../models/user");
 
 const authRouter = express.Router();
 authRouter.post("api/signup",async (req, res) => {
-    const {name , email, password} = req.body;
+    try{
+        const {name , email, password} = req.body;
 
     const existingUser = await User.findOne({ email });
 
@@ -19,9 +20,9 @@ authRouter.post("api/signup",async (req, res) => {
 
     user = await user.save();
     res.json(user)
-
-
-
-})
+    }catch(e){
+        res.status(500);
+    }
+});
 //Export this files mean able to use this files function in anyother file
 module.exports = authRouter;  
