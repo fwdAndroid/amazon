@@ -5,6 +5,7 @@ import 'package:amazon/constants/global_variables.dart';
 import 'package:amazon/constants/utils.dart';
 import 'package:amazon/models/user_models.dart';
 import 'package:amazon/screens/home_screen.dart';
+import 'package:amazon/widgets/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -78,7 +79,7 @@ class AuthService {
           await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
           Navigator.pushNamedAndRemoveUntil(
             context,
-            HomeScreen.routeName,
+            BottomBar.routeName,
             (route) => false,
           );
         },
